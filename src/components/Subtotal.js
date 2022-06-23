@@ -3,8 +3,10 @@ import "./Subtotal.css"
 import CurrencyFormat from "react-currency-format"
 import { useStateValue } from "./Stateprovider"
 import { getTotalSum } from "./Reducer"
+import { useNavigate } from "react-router-dom"
 
 function Subtotal() {
+  const history = useNavigate()
   const [{ basket }, dispatch] = useStateValue()
 
   return (
@@ -27,7 +29,7 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"€"}
       />
-      <button>Tramitar pedido</button>
+      <button onClick={(e) => history("/payment")}>Tramitar pedido</button>
     </div>
   )
 }
